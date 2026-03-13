@@ -203,24 +203,81 @@ document.addEventListener('DOMContentLoaded', () => {
         isPlaying = !isPlaying;
     };
 
-    // Distance Map Initialization
-    function initMap() {
-        const mapContainer = document.getElementById('map-container');
-        if (!mapContainer) return;
+    // Calendar Logic
+    let currentDate = new Date(2026, 1, 21); // Start from Feb 21, 2026
+    const minDate = new Date(2026, 1, 21);
+    const maxDate = new Date(2026, 6, 30); // End July 30, 2026
 
-        mapContainer.innerHTML = `
-            <svg class="map-svg" viewBox="0 0 800 300">
-                <path id="route" class="map-line" d="M100,200 Q400,50 700,200" />
-                <text x="80" y="230" fill="#fff" font-size="14">India 🇮🇳</text>
-                <text x="680" y="230" fill="#fff" font-size="14">France 🇫🇷</text>
-                <circle cx="100" cy="200" r="5" fill="#fff" />
-                <circle cx="700" cy="200" r="5" fill="#fff" />
-                <path class="map-heart" d="M0,0 C-2,-2 -5,-2 -5,1 C-5,4 0,7 0,7 C0,7 5,4 5,1 C5,-2 2,-2 0,0" />
-            </svg>
-        `;
+    function renderCalendar() {
+        const calendarDays = document.getElementById('calendar-days');
+        const monthYearText = document.getElementById('current-month-year');
+        if (!calendarDays || !monthYearText) return;
+
+        calendarDays.innerHTML = '';
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+
+        monthYearText.textContent = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(currentDate);
+
+        const firstDayOfMonth = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        // Empty slots for days before the first day of the month
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.classList.add('cal-day', 'empty');
+            calendarDays.appendChild(emptyDay);
+        }
+
+        // Days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const dayEl = document.createElement('div');
+            dayEl.classList.add('cal-day');
+
+            const dayNum = document.createElement('span');
+            dayNum.classList.add('day-num');
+            dayNum.textContent = day;
+            dayEl.appendChild(dayNum);
+
+            // Check if there's a memory for this date
+            const memoryIndex = memoriesData.findIndex(m => m.date === dateStr);
+            if (memoryIndex !== -1) {
+                dayEl.classList.add('has-memory');
+                const heart = document.createElement('i');
+                heart.classList.add('fas', 'fa-heart', 'heart-marker');
+                dayEl.appendChild(heart);
+                dayEl.onclick = () => openMemory(memoryIndex);
+            }
+
+            // Disable days outside the range
+            const dayDate = new Date(year, month, day);
+            if (dayDate < minDate || dayDate > maxDate) {
+                dayEl.style.opacity = '0.3';
+                dayEl.style.pointerEvents = 'none';
+            }
+
+            calendarDays.appendChild(dayEl);
+        }
     }
 
+    document.getElementById('prev-month').onclick = () => {
+        if (currentDate.getMonth() > 1 || currentDate.getFullYear() > 2026) {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        }
+    };
+
+    document.getElementById('next-month').onclick = () => {
+        if (currentDate.getMonth() < 6 || currentDate.getFullYear() < 2026) {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        }
+    };
+
     // Initialize
-    loadMemories();
+    loadMemories().then(() => {
+        renderCalendar();
+    });
     initMap();
 });
