@@ -2,147 +2,136 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Yadav in France 🇫🇷 | A Friendship Journey</title>
-
-<meta name="description" content="A digital memory diary of Yadav's semester exchange in France, created by Rahul.">
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<script>
-const password = prompt("Enter password to view this site:");
-
-if(password !== "rahulyadav"){
-document.write("<h1 style='text-align:center;margin-top:120px;'>Access Denied</h1>");
-throw new Error("Access denied");
-}
-</script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yadav in France 🇫🇷 | A Friendship Journey</title>
+    <meta name="description" content="A digital memory diary of Yadav's semester exchange in France, created by Rahul.">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <div id="particles-js"></div>
 
-<div id="particles-js"></div>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Yadav in France 🇫🇷</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#calendar">Calendar</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#message">Message</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<nav id="navbar">
-<div class="nav-container">
+    <main id="content">
+        <!-- Landing Page Section -->
+        <section id="home" class="page active">
+            <div class="hero-content">
+                <h1 class="animated-title">Yadav in France 🇫🇷</h1>
+                <p class="subtitle">A Journey of Friendship, Distance, and Memories</p>
+                <div class="slideshow-container">
+                    <div class="slide fade">
+                        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=1200"
+                            alt="Paris">
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#timeline" class="btn btn-primary">Start the Journey</a>
+                </div>
+                <div class="memory-counter">
+                    <span id="days-count">0</span> Days Documented
+                </div>
+            </div>
+        </section>
 
-<a href="#home" class="logo">Yadav in France 🇫🇷</a>
+        <!-- Calendar Section -->
+        <section id="calendar" class="page">
+            <div class="section-header">
+                <h2>Memory Calendar</h2>
+                <p>February — July 2026</p>
+            </div>
+            <div id="calendar-wrapper" class="glass">
+                <div class="calendar-header">
+                    <button id="prev-month" class="cal-nav"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="current-month-year">Month Year</h3>
+                    <button id="next-month" class="cal-nav"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid-container">
+                    <div class="calendar-weekdays">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                    <div id="calendar-days" class="calendar-days"></div>
+                </div>
+            </div>
+        </section>
 
-<ul class="nav-links">
-<li><a href="#home" class="active">Home</a></li>
-<li><a href="#timeline">Timeline</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#message">Message</a></li>
-</ul>
+        <!-- Timeline Section -->
+        <section id="timeline" class="page">
+            <div class="section-header">
+                <h2>Memory Timeline</h2>
+                <p>21 February 2026 — 16 July 2026</p>
+            </div>
+            <div class="timeline-container" id="timeline-list">
+                <!-- Timeline items will be injected here -->
+            </div>
+        </section>
 
-</div>
-</nav>
+        <!-- Gallery Section -->
+        <section id="gallery" class="page">
+            <div class="section-header">
+                <h2>Photo Gallery</h2>
+                <p>Moments captured across France</p>
+            </div>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-month="all">All</button>
+                <button class="filter-btn" data-month="Feb">February</button>
+                <button class="filter-btn" data-month="Mar">March</button>
+            </div>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery items will be injected here -->
+            </div>
+        </section>
 
-<main id="content">
+        <!-- Message Section -->
+        <section id="message" class="page">
+            <div class="message-card glass">
+                <div class="heart-icon"><i class="fas fa-heart"></i></div>
+                <p class="heartfelt-note">
+                    “This website holds every moment we shared while distance separated us. Even though you were in
+                    France and I was in India, our friendship stayed strong through every memory.”
+                </p>
+                <p class="signature">— Rahul</p>
+            </div>
+            <div class="distance-map">
+                <!-- Map SVG/Animation will go here -->
+                <div id="map-container"></div>
+            </div>
+        </section>
+    </main>
 
-<section id="home" class="page active">
+    <div id="memory-modal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
-<div class="hero-content">
+    <div class="music-toggle" id="music-btn">
+        <i class="fas fa-music"></i>
+    </div>
 
-<h1 class="animated-title">Yadav in France 🇫🇷</h1>
-
-<p class="subtitle">
-A Journey of Friendship, Distance, and Memories
-</p>
-
-<div class="hero-buttons">
-<a href="#timeline" class="btn btn-primary">Start the Journey</a>
-</div>
-
-<div class="memory-counter">
-<span id="days-count">0</span> Days Documented
-</div>
-
-</div>
-
-</section>
-
-<section id="timeline" class="page">
-
-<div class="section-header">
-<h2>Memory Timeline</h2>
-<p>21 February 2026 — 16 July 2026</p>
-</div>
-
-<div class="timeline-container" id="timeline-list">
-</div>
-
-</section>
-
-<section id="gallery" class="page">
-
-<div class="section-header">
-<h2>Photo Gallery</h2>
-<p>Moments captured across France</p>
-</div>
-
-<div class="gallery-grid" id="gallery-grid">
-</div>
-
-</section>
-
-<section id="message" class="page">
-
-<div class="message-card glass">
-
-<div class="heart-icon">
-<i class="fas fa-heart"></i>
-</div>
-
-<p class="heartfelt-note">
-“This website holds every moment we shared while distance separated us.
-Even though you were in France and I was in India,
-our friendship stayed strong through every memory.”
-</p>
-
-<p class="signature">
-— Rahul
-</p>
-
-</div>
-
-<div class="distance-map">
-<div id="map-container"></div>
-</div>
-
-</section>
-
-</main>
-
-<div id="memory-modal" class="modal">
-
-<div class="modal-content glass">
-
-<span class="close-modal">&times;</span>
-
-<div id="modal-body"></div>
-
-</div>
-
-</div>
-
-<div class="music-toggle" id="music-btn">
-<i class="fas fa-music"></i>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-<script src="js/main.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
