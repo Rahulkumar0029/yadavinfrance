@@ -646,3 +646,22 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+
+@media (max-width: 768px) {
+
+  body{
+    overflow-x:hidden;
+  }
+
+  /* Navbar */
+  .nav-container{
+    flex-direction:column;
+    gap:10px;
+    padding:10px;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:
