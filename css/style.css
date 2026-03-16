@@ -696,3 +696,15 @@ font-size:0.85rem;
 }
 
 }
+/* Timeline Animation */
+
+.timeline-item{
+opacity:0;
+transform:translateY(60px);
+transition:all 0.8s ease;
+}
+
+.timeline-item.show{
+opacity:1;
+transform:translateY(0);
+}
