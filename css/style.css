@@ -18,6 +18,12 @@
     box-sizing: border-box;
 }
 
+img{
+max-width:100%;
+height:auto;
+display:block;
+}
+
 body {
     font-family: 'Outfit', 'Inter', sans-serif;
     background: #0f0c29;
@@ -36,6 +42,7 @@ body {
     height: 100%;
     z-index: -1;
 }
+
 
 /* Glassmorphism utility */
 .glass {
@@ -102,11 +109,13 @@ body {
 }
 
 /* Page transitions */
-.page {
-    display: none;
-    padding: 120px 20px 60px;
-    min-height: 100vh;
-    animation: fadeIn 0.8s ease forwards;
+.page{
+display:none;
+padding:120px 20px 60px;
+min-height:100vh;
+animation:fadeIn 0.8s ease forwards;
+max-width:1200px;
+margin:auto;
 }
 
 .page.active {
@@ -126,12 +135,14 @@ body {
 }
 
 /* Hero Section */
-#home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+#home{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+max-width:1200px;
+margin:auto;
 }
 
 .animated-title {
@@ -203,10 +214,17 @@ body {
 }
 
 /* Calendar Styles */
-#calendar-wrapper {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 30px;
+#calendar-wrapper{
+max-width:800px;
+margin:40px auto;
+padding:30px;
+width:100%;
+}
+
+.slideshow-container img{
+width:100%;
+height:auto;
+border-radius:20px;
 }
 
 .calendar-header {
